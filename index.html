@@ -1,0 +1,154 @@
+<html>
+
+<head>
+  <title>Real Time Image Identification App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+  <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <span id="result_object_name"></span><br>
+  <span id="result_accuracy_name"></span>
+  <h1>Mobilenet vs Google Lens - Case Study</h1>
+  <h3 id="objectslist">Objects: dictionary, calculator, mouse, USB, lego brick, tissue, pencil, ball, eraser, battery</h3>
+  <div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Object 1: dictionary</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" id="a">
+      <p>Output on Google Lens: book</p>
+      <p>Output on MobileNet: book</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Google Lens and MobileNet was both accurate.</p>
+    </div>
+  </div>
+  <hr>
+  <div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Object 2: calculator</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" id="a">
+      <p>Output on Google Lens: calculator</p>
+      <p>Output on MobileNet: calculator</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Google Lens and MobileNet was both accurate.</p>
+    </div>
+  </div>
+  <hr>
+  <div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Object 3: mouse</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" id="a">
+      <p>Output on Google Lens: mouse</p>
+      <p>Output on MobileNet: mouse</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Google Lens and MobileNet was both accurate.</p>
+    </div>
+  </div>
+  <hr>
+  <div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Object 4: USB</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" id="a">
+      <p>Output on Google Lens: USB</p>
+      <p>Output on MobileNet: paperclip</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Google Lens was accurate.</p>
+    </div>
+  </div>
+  <hr>
+  <div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Object 5: lego brick</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" id="a">
+      <p>Output on Google Lens: lego brick</p>
+      <p>Output on MobileNet: lego brick</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Google Lens and MobileNet was both accurate.</p>
+    </div>
+  </div>
+  <hr>
+  <div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Object 6: tissue</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" id="a">
+      <p>Output on Google Lens: tissue</p>
+      <p>Output on MobileNet: paper</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Google Lens was accurate.</p>
+    </div>
+  </div>
+  <hr>
+  <div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Object 7: pencil</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" id="a">
+      <p>Output on Google Lens: lego brick</p>
+      <p>Output on MobileNet: lego brick</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Google Lens and MobileNet was both accurate.</p>
+    </div>
+  </div>
+  <hr>
+  <div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Object 8: ball</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" id="a">
+      <p>Output on Google Lens: soccer ball</p>
+      <p>Output on MobileNet: circle</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Google Lens was accurate.</p>
+    </div>
+  </div>
+  <hr>
+  <div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Object 9: eraser</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" id="a">
+      <p>Output on Google Lens: eraser</p>
+      <p>Output on MobileNet: eraser</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Google Lens and MobileNet was both accurate.</p>
+    </div>
+  </div>
+  <hr>
+  <div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Object 10: battery</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" id="a">
+      <p>Output on Google Lens: battery</p>
+      <p>Output on MobileNet: battery</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <p>Google Lens and MobileNet was both accurate.</p>
+    </div>
+  </div>
+  <h3 id="conclusion">Final conclusion: Google Lens was more accurate than MobileNet. Google Lens was correct 10 times, while MobileNet was correct 7 times.</h3>
+  <script src="maifn.js"></script>
+</body>
+
+</html>
